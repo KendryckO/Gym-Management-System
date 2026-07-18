@@ -21,7 +21,18 @@ public class LoginScreen {
         frame.add(password);
         frame.add(login);
 
-        login.addActionListener(e -> JOptionPane.showMessageDialog(frame, username.getText().equals("admin") ? "Welcome" : "Error"));
+        login.addActionListener(e ->
+        {
+            if (username.getText().equals("admin"))
+            {
+                new Dashboard();
+                frame.dispose();
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(frame, "Error");
+            }
+        });
 
         frame.setSize(300, 220);
         frame.setLayout(null);
