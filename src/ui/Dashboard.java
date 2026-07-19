@@ -14,16 +14,23 @@ public class Dashboard
 
         String[] names = {"add member", "billing", "class schedule", "trainer", "attendance", "equipment", "reports"};
 
-        for (int x = 0; x < names.length; x++)
-        {
+        for (int x = 0; x < names.length; x++) {
+            String screen = names[x];
+
             JButton button = new JButton(names[x]);
             button.setBounds(70, 55 + (x * 40), 180, 30);
             frame.add(button);
 
             button.addActionListener(e ->
-                    JOptionPane.showMessageDialog(frame, "not done :/"));
+            {
+                if (screen.equals("add member")) {
+                    new MemberRegistration();
+                    frame.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(frame, "not done yet :/");
+                }
+            });
         }
-
         JButton logout = new JButton("logout");
         logout.setBounds(70, 335, 180, 30);
         frame.add(logout);
