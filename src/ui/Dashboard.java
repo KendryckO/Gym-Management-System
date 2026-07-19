@@ -23,10 +23,18 @@ public class Dashboard
 
             button.addActionListener(e ->
             {
-                if (screen.equals("add member")) {
+                if (screen.equals("add member"))
+                {
                     new MemberRegistration();
                     frame.dispose();
-                } else {
+                }
+                else if (screen.equals("billing"))
+                {
+                    new Billing();
+                    frame.dispose();
+                }
+                else
+                {
                     JOptionPane.showMessageDialog(frame, "not done yet :/");
                 }
             });
