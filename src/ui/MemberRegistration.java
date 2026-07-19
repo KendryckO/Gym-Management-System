@@ -49,6 +49,19 @@ public class MemberRegistration
             frame.dispose();
         });
 
+        next.addActionListener(e ->
+        {
+            if (name.getText().isEmpty() || email.getText().isEmpty())
+            {
+                JOptionPane.showMessageDialog(frame, "enter name and email");
+            }
+            else
+            {
+                new MembershipPlan(name.getText());
+                frame.dispose();
+            }
+        });
+
         frame.setSize(330, 250);
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
