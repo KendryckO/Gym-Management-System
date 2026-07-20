@@ -33,6 +33,11 @@ public class Dashboard
                     new Billing();
                     frame.dispose();
                 }
+                else if (screen.equals(“trainer))
+                {
+                    new Trainer();
+                    frame.dispose();
+                }
                 else
                 {
                     JOptionPane.showMessageDialog(frame, "not done yet :/");
