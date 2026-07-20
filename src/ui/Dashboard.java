@@ -38,6 +38,11 @@ public class Dashboard
                     new Trainer();
                     frame.dispose();
                 }
+                else if (screen.equals("attendance"))
+                {
+                    new Attendance();
+                    frame.dispose();
+                }
                 else
                 {
                     JOptionPane.showMessageDialog(frame, "not done yet :/");
