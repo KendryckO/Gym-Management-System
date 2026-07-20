@@ -1,0 +1,14 @@
+PASS  UI-01 login screen opens on start
+PASS  UI-02 empty login fields are blocked
+PASS  UI-03 wrong password shows error and stays on login
+PASS  UI-04 valid login opens dashboard
+PASS  UI-05 add member opens registration screen
+PASS  UI-06 empty registration is blocked
+PASS  UI-07 invalid email is blocked
+PASS  UI-08 invalid phone is blocked
+PASS  UI-09 valid details open membership plan screen
+PASS  UI-10 confirming plan opens billing prefilled
+PASS  UI-11 payment returns to dashboard (journey complete)
+PASS  UI-12 logout returns to login screen
+----------------------------------------
+total: 12  passed: 12  failed: 0

@@ -1,10 +1,13 @@
 package ui;
 
 import javax.swing.*;
+import functional.BillingService;
+import functional.MemberService;
+import model.Member;
 
-class MembershipPlan
+public class MembershipPlan
 {
-    public MembershipPlan(String memberName)
+    public MembershipPlan(String name, String email, String phone)
     {
         JFrame frame = new JFrame("membership plan");
 
@@ -28,10 +31,23 @@ class MembershipPlan
         confirm.addActionListener(e ->
         {
             String plan = (String) planList.getSelectedItem();
-            JOptionPane.showMessageDialog(frame, memberName + " registered with " + plan);
-            new Dashboard();
-            frame.dispose();
+            Member member = MemberService.registerMember(name, email, phone, plan);
+
+            if (member == null)
+            {
+                JOptionPane.showMessageDialog(frame, "email already registered");
+                new Dashboard();
+                frame.dispose();
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(frame,
+                        "member #" + member.id + " " + member.name + " registered with " + plan);
+                new Billing(member.name, BillingService.planPrice(plan));
+                frame.dispose();
+            }
         });
+
         back.addActionListener(e ->
         {
             new MemberRegistration();

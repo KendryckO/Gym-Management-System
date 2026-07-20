@@ -1,6 +1,8 @@
 package ui;
 
 import javax.swing.*;
+import functional.MemberService;
+import middleware.InputValidator;
 
 public class MemberRegistration
 {
@@ -33,13 +35,30 @@ public class MemberRegistration
 
         next.addActionListener(e ->
         {
-            if (name.getText().isEmpty() || email.getText().isEmpty())
+            String n = name.getText().trim();
+            String em = email.getText().trim();
+            String ph = phone.getText().trim();
+
+            if (!InputValidator.notEmpty(n) || !InputValidator.notEmpty(em) || !InputValidator.notEmpty(ph))
             {
-                JOptionPane.showMessageDialog(frame, "enter name and email");
+                JOptionPane.showMessageDialog(frame, "please fill in all fields");
+            }
+            else if (!InputValidator.isValidEmail(em))
+            {
+                JOptionPane.showMessageDialog(frame, "invalid email format");
+            }
+            else if (!InputValidator.isValidPhone(ph))
+            {
+                JOptionPane.showMessageDialog(frame, "phone must be 7 to 15 digits");
+            }
+            else if (MemberService.findByEmail(em) != null)
+            {
+                JOptionPane.showMessageDialog(frame, "email already registered");
             }
             else
             {
-                JOptionPane.showMessageDialog(frame, "member information saved");
+                new MembershipPlan(n, em, ph);
+                frame.dispose();
             }
         });
 
@@ -47,19 +66,6 @@ public class MemberRegistration
         {
             new Dashboard();
             frame.dispose();
-        });
-
-        next.addActionListener(e ->
-        {
-            if (name.getText().isEmpty() || email.getText().isEmpty())
-            {
-                JOptionPane.showMessageDialog(frame, "enter name and email");
-            }
-            else
-            {
-                new MembershipPlan(name.getText());
-                frame.dispose();
-            }
         });
 
         frame.setSize(330, 250);

@@ -1,0 +1,15 @@
+PASS  TC-01 login accepted with valid credentials (admin/admin123)
+PASS  TC-02 logout clears the session
+PASS  TC-03 login rejected with wrong password
+PASS  TC-04 login rejected for unknown user
+PASS  TC-05 email validation accepts valid and rejects invalid format
+PASS  TC-06 phone validation accepts digits only, 7 to 15 long
+PASS  TC-07 valid registration creates member with auto id
+PASS  TC-08 duplicate email is rejected
+PASS  TC-09 plan prices map correctly (20/30/40)
+PASS  TC-10 payment recorded with receipt number and revenue updated
+PASS  TC-11 payment rejected for unregistered member
+PASS  TC-12 amount validation rejects zero, negative and text
+PASS  TC-13 members and payments persist to file and reload
+----------------------------------------
+total: 13  passed: 13  failed: 0
